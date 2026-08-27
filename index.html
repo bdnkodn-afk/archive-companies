@@ -7,17 +7,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root{
-    --bg:#F4F6F9;
-    --card:#FFFFFF;
-    --primary:#1E2B27;
-    --accent:#C59B27;
-    --accent-bg:#FDF8EC;
-    --text:#1A202C;
-    --muted:#64748B;
-    --border:#E2E8F0;
-    --danger:#DC2626;
-    --radius:14px;
-    --shadow: 0 4px 14px rgba(0,0,0,0.05);
+    --bg:#F4F6F9;--card:#FFFFFF;--primary:#1E2B27;--accent:#C59B27;
+    --accent-bg:#FDF8EC;--text:#1A202C;--muted:#64748B;--border:#E2E8F0;
+    --danger:#DC2626;--radius:14px;--shadow: 0 4px 14px rgba(0,0,0,0.05);
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   body{
@@ -26,7 +18,6 @@
     padding-bottom:85px;font-size:15px;min-height:100vh;
   }
   .wrap{max-width:600px;margin:0 auto;padding:16px;}
-
   header.top{
     display:flex;align-items:center;justify-content:space-between;
     padding-bottom:12px;margin-bottom:14px;border-bottom:2px solid var(--border);
@@ -36,11 +27,7 @@
     display:flex;align-items:center;gap:6px;font-size:12.5px;
     background:var(--card);padding:4px 10px;border-radius:20px;border:1px solid var(--border);font-weight:600;
   }
-  .role-pill{
-    font-size:10.5px;font-weight:700;background:var(--accent-bg);color:var(--accent);
-    padding:1px 5px;border-radius:5px;
-  }
-
+  .role-pill{font-size:10.5px;font-weight:700;background:var(--accent-bg);color:var(--accent);padding:1px 5px;border-radius:5px;}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:6px;
     font-size:13.5px;font-weight:700;padding:10px 14px;border-radius:10px;
@@ -51,16 +38,11 @@
   .btn.danger-btn{background:#FDF2F2;color:var(--danger);border-color:#FCA5A5;}
   .btn.sm{padding:5px 10px;font-size:12px;border-radius:6px;}
   .btn.ghost{background:transparent;border:none;color:var(--muted);}
-
   .card-box{
     background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:16px;margin-bottom:14px;
   }
-
-  /* Home Vertical Stack */
-  .home-vertical-list{
-    display:flex;flex-direction:column;gap:12px;margin-top:10px;
-  }
+  .home-vertical-list{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
   .home-card{
     background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:16px 18px;display:flex;align-items:center;
@@ -72,7 +54,6 @@
   .home-card .title{font-size:16px;font-weight:800;color:var(--primary);margin-bottom:2px;}
   .home-card .desc{font-size:12px;color:var(--muted);}
   .home-card .arrow{color:var(--muted);font-size:20px;}
-
   .co-select-card{
     background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
     box-shadow:var(--shadow);padding:14px 16px;margin-bottom:10px;display:flex;
@@ -82,7 +63,6 @@
   .co-select-info{display:flex;align-items:center;gap:10px;}
   .co-select-info .ic{font-size:24px;}
   .co-select-name{font-size:15px;font-weight:700;}
-
   .search-box{margin-bottom:12px;position:relative;}
   .search-box input{
     width:100%;padding:12px 14px 12px 40px;border-radius:10px;border:1.5px solid var(--border);
@@ -90,7 +70,6 @@
   }
   .search-box input:focus{border-color:var(--primary);}
   .search-ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px;}
-
   .sug-list{
     background:var(--card);border:1px solid var(--border);border-radius:10px;
     box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px;
@@ -100,13 +79,9 @@
     cursor:pointer;display:flex;align-items:center;justify-content:space-between;
   }
   .sug-item:last-child{border-bottom:none;}
-  .sug-item:active{background:var(--bg);}
   .highlight{background:#FFF2A8;font-weight:800;border-radius:2px;padding:0 2px;}
-
-  /* Slider for Users / Tabs */
   .user-slider-wrap{
-    display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;
-    scrollbar-width:none;align-items:center;
+    display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;align-items:center;
   }
   .user-slider-wrap::-webkit-scrollbar{display:none;}
   .user-slider-pill{
@@ -114,54 +89,38 @@
     border:1.5px solid var(--border);font-size:13px;font-weight:700;cursor:pointer;
     display:flex;align-items:center;gap:6px;color:var(--muted);
   }
-  .user-slider-pill.active{
-    background:var(--primary);color:#fff;border-color:var(--primary);
-  }
-
-  /* Folder & Files Slider */
+  .user-slider-pill.active{background:var(--primary);color:#fff;border-color:var(--primary);}
   .folder-head{
-    padding:12px 14px;display:flex;align-items:center;
-    justify-content:space-between;border-bottom:1px solid var(--border);
+    padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);
   }
   .folder-name{font-weight:800;font-size:14px;}
   .files-slider{
-    display:flex;gap:12px;overflow-x:auto;padding:12px 14px;
-    scrollbar-width:none;align-items:stretch;
+    display:flex;gap:12px;overflow-x:auto;padding:12px 14px;scrollbar-width:none;align-items:stretch;
   }
   .files-slider::-webkit-scrollbar{display:none;}
-  
   .file-card{
     flex:0 0 125px;background:var(--bg);border:1.5px solid var(--border);
-    border-radius:12px;padding:8px;display:flex;flex-direction:column;
-    align-items:center;justify-content:flex-start;cursor:pointer;
+    border-radius:12px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;cursor:pointer;
   }
   .file-card:active{transform:scale(0.96);border-color:var(--primary);}
   .file-card-preview{
     width:100%;height:95px;display:flex;align-items:center;justify-content:center;
-    font-size:36px;background:#fff;border-radius:8px;margin-bottom:8px;
-    border:1px solid #ECEFF2;overflow:hidden;
+    font-size:36px;background:#fff;border-radius:8px;margin-bottom:8px;border:1px solid #ECEFF2;overflow:hidden;
   }
-  .file-card-preview img{
-    width:100%;height:100%;object-fit:cover;
-  }
+  .file-card-preview img{width:100%;height:100%;object-fit:cover;}
   .file-card-title{
     font-size:12px;font-weight:700;line-height:1.3;text-align:center;
-    overflow:hidden;text-overflow:ellipsis;display:-webkit-box;
-    -webkit-line-clamp:2;-webkit-box-orient:vertical;width:100%;
+    overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;width:100%;
   }
-
   .pass-row-item{
-    background:var(--bg);border:1px solid var(--border);border-radius:10px;
-    padding:12px 14px;margin-bottom:10px;font-size:13.5px;
+    background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:13.5px;
   }
   .pass-row-item:last-child{margin-bottom:0;}
   .pass-meta{display:flex;align-items:center;justify-content:space-between;margin-top:6px;color:var(--muted);}
-
   .bottom-nav{
     position:fixed;bottom:0;left:0;right:0;height:62px;
     background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);
-    border-top:1px solid var(--border);display:flex;align-items:center;
-    justify-content:space-around;z-index:90;box-shadow:0 -4px 12px rgba(0,0,0,0.03);
+    border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;z-index:90;box-shadow:0 -4px 12px rgba(0,0,0,0.03);
     max-width:600px;margin:0 auto;
   }
   .nav-tab{
@@ -170,50 +129,32 @@
   }
   .nav-tab .nav-ic{font-size:18px;}
   .nav-tab.active{color:var(--primary);}
-  .nav-tab.active .nav-ic{transform:scale(1.1);}
-
   .modal-overlay{
-    position:fixed;inset:0;background:rgba(0,0,0,0.65);
-    display:flex;align-items:flex-end;justify-content:center;z-index:110;
+    position:fixed;inset:0;background:rgba(0,0,0,0.65);display:flex;align-items:flex-end;justify-content:center;z-index:110;
   }
   .modal-sheet{
-    background:var(--card);border-radius:18px 18px 0 0;width:100%;max-width:600px;
-    max-height:85vh;overflow-y:auto;padding:20px 18px 30px;
+    background:var(--card);border-radius:18px 18px 0 0;width:100%;max-width:600px;max-height:85vh;overflow-y:auto;padding:20px 18px 30px;
   }
   .field{margin-bottom:12px;}
   .field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--muted);}
   .field input{
-    width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--border);
-    background:var(--bg);font-size:14px;
+    width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:14px;
   }
   .field input:focus{outline:none;border-color:var(--primary);background:#fff;}
-
   .media-full-overlay{
-    position:fixed;inset:0;background:#0F1312;display:flex;flex-direction:column;
-    z-index:250;animation:fadeIn 0.15s ease-out;
+    position:fixed;inset:0;background:#0F1312;display:flex;flex-direction:column;z-index:250;
   }
-  @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-  
   .media-full-header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 18px;color:#fff;background:rgba(26,32,30,0.85);backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:space-between;padding:14px 18px;color:#fff;background:rgba(26,32,30,0.85);backdrop-filter:blur(8px);
   }
   .media-full-title{font-size:15px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:10px;}
-  .media-full-body{
-    flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:10px;
-  }
-  .media-full-body img{
-    max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;
-  }
+  .media-full-body{flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:10px;}
+  .media-full-body img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;}
   .media-full-footer{
-    padding:12px 16px 20px;background:rgba(26,32,30,0.92);backdrop-filter:blur(8px);
-    display:flex;gap:8px;justify-content:space-around;flex-wrap:wrap;
+    padding:12px 16px 20px;background:rgba(26,32,30,0.92);backdrop-filter:blur(8px);display:flex;gap:8px;justify-content:space-around;flex-wrap:wrap;
   }
-
   .toast{
-    position:fixed;top:16px;left:50%;transform:translateX(-50%);
-    background:#111;color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;
-    opacity:0;pointer-events:none;z-index:300;transition:opacity 0.2s;
+    position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;z-index:300;transition:opacity 0.2s;
   }
   .toast.show{opacity:1;}
 </style>
@@ -270,14 +211,9 @@ let currentView = 'home';
 let selectedCoId = null;
 let searchQuery = '';
 let vaultSearchQuery = '';
-let selectedVaultUserFilter = 'all'; // 'all' or uid
+let selectedVaultUserFilter = 'all';
 
 function cid(){ return 'id-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,5); }
-
-async function hashPassword(p, s){
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s + ':' + p));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
 
 async function syncCloud(shouldRender = true){
   if(!supabaseClient) return;
@@ -307,20 +243,14 @@ function setupRealtimeListener(){
   if(!supabaseClient) return;
   supabaseClient.channel('realtime_all')
     .on('postgres_changes', { event: '*', schema: 'public', table: 'archive_data' }, payload => {
-      if(payload.new?.data){
-        archiveData = payload.new.data;
-        if(session) render();
-      }
+      if(payload.new?.data){ archiveData = payload.new.data; if(session) render(); }
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'archive_users' }, payload => {
       if(payload.new?.data){
         usersData = payload.new.data;
         if(session){
           const updated = usersData.users.find(u => u.id === session.id);
-          if(updated){
-            session = updated;
-            localStorage.setItem('arc_current_session', JSON.stringify(session));
-          }
+          if(updated){ session = updated; localStorage.setItem('arc_current_session', JSON.stringify(session)); }
           render();
         }
       }
@@ -385,7 +315,6 @@ function visibleCompanies(){
   if(isAdmin()) return archiveData.companies;
   return archiveData.companies.filter(c => canAccessCompany(c.id));
 }
-
 function getFileIcon(name){
   const ext = (name||'').split('.').pop().toLowerCase();
   if(['png', 'jpg', 'jpeg', 'webp', 'svg', 'gif'].includes(ext)) return '🖼️';
@@ -394,21 +323,17 @@ function getFileIcon(name){
   if(['xls', 'xlsx'].includes(ext)) return '📊';
   return '📄';
 }
-
 function isImageFile(f){
   const ext = ((f.actualName || f.name || '')).split('.').pop().toLowerCase();
   return ['png', 'jpg', 'jpeg', 'webp', 'svg', 'gif'].includes(ext) || f.isImg;
 }
-
 function getDirectFileUrl(storagePath){
   return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET_NAME}/${storagePath}`;
 }
-
 function copyText(txt){
   navigator.clipboard.writeText(txt).then(()=> showToast('تم النسخ 📋'));
 }
 
-/* App Entry */
 async function init(){
   await syncCloud(false);
   setupRealtimeListener();
@@ -438,9 +363,7 @@ async function submitSetup(){
   const u = document.getElementById('su-username').value.trim();
   const p = document.getElementById('su-password').value;
   if(!u || p.length < 4){ showToast('أدخل اسماً وكلمة سر من 4 خانات'); return; }
-  const salt = cid();
-  const hash = await hashPassword(p, salt);
-  const admin = { id: cid(), username: u, salt, hash, role: 'admin', permissions: {} };
+  const admin = { id: cid(), username: u, pass: p, role: 'admin', permissions: {} };
   usersData = { users: [admin] };
   await saveUsers();
   await saveArchive();
@@ -464,8 +387,8 @@ async function submitLogin(){
   await syncCloud(false);
   const u = document.getElementById('li-username').value.trim();
   const p = document.getElementById('li-password').value;
-  const user = usersData.users.find(x => x.username === u);
-  if(!user || (await hashPassword(p, user.salt)) !== user.hash){
+  const user = usersData.users.find(x => x.username === u && x.pass === p);
+  if(!user){
     showToast('بيانات الدخول غير صحيحة');
     return;
   }
@@ -512,7 +435,6 @@ function render(){
   else if(currentView === 'settings') renderSettings();
 }
 
-/* 0. الصفحة الرئيسية */
 function renderHomeDashboard(){
   const app = document.getElementById('app');
   app.innerHTML = `
@@ -523,36 +445,24 @@ function renderHomeDashboard(){
     <div class="home-vertical-list">
       <div class="home-card" onclick="switchNav('companies')">
         <div class="ic">🏢</div>
-        <div class="home-info">
-          <div class="title">الشركات والملفات</div>
-          <div class="desc">استعراض وتنزيل المستندات والسجلات</div>
-        </div>
+        <div class="home-info"><div class="title">الشركات والملفات</div><div class="desc">استعراض وتنزيل المستندات والسجلات</div></div>
         <span class="arrow">‹</span>
       </div>
       <div class="home-card" onclick="switchNav('search')">
         <div class="ic">🔍</div>
-        <div class="home-info">
-          <div class="title">البحث الذكي السريع</div>
-          <div class="desc">البحث الفوري بالاقتراحات لكافة الملفات</div>
-        </div>
+        <div class="home-info"><div class="title">البحث الذكي السريع</div><div class="desc">البحث الفوري بالاقتراحات لكافة الملفات</div></div>
         <span class="arrow">‹</span>
       </div>
       ${hasAnyVaultAccess() ? `
         <div class="home-card" onclick="switchNav('vault')">
           <div class="ic">🔑</div>
-          <div class="home-info">
-            <div class="title">خزنة كلمات المرور</div>
-            <div class="desc">الحسابات والرموز السرية المحمية</div>
-          </div>
+          <div class="home-info"><div class="title">خزنة كلمات المرور</div><div class="desc">الحسابات والرموز السرية المحمية</div></div>
           <span class="arrow">‹</span>
         </div>
       ` : ''}
       <div class="home-card" onclick="switchNav('settings')">
         <div class="ic">⚙️</div>
-        <div class="home-info">
-          <div class="title">الإعدادات والتحكم</div>
-          <div class="desc">${isAdmin()?'إدارة الشركات، الصلاحيات، والموظفين':'تعديل بيانات الحساب وكلمة المرور'}</div>
-        </div>
+        <div class="home-info"><div class="title">الإعدادات والتحكم</div><div class="desc">${isAdmin()?'إدارة الشركات، الصلاحيات، والموظفين':'تعديل بيانات الحساب وكلمة المرور'}</div></div>
         <span class="arrow">‹</span>
       </div>
     </div>
@@ -566,24 +476,16 @@ function renderCompaniesList(){
     app.innerHTML = `<div class="card-box" style="text-align:center;padding:26px;color:var(--muted);">لا تملك صلاحية الوصول لأي شركة</div>`;
     return;
   }
-
   let listHtml = cos.map(c => `
     <div class="co-select-card" onclick="openCompany('${c.id}')">
       <div class="co-select-info">
         <span class="ic">🏢</span>
-        <div>
-          <div class="co-select-name">${escapeHtml(c.name)}</div>
-          <div style="font-size:11.5px;color:var(--muted);">${c.categories.length} تصانيف</div>
-        </div>
+        <div><div class="co-select-name">${escapeHtml(c.name)}</div><div style="font-size:11.5px;color:var(--muted);">${c.categories.length} تصانيف</div></div>
       </div>
       <span style="color:var(--muted);font-size:18px;">‹</span>
     </div>
   `).join('');
-
-  app.innerHTML = `
-    <div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">🏢 اختر الشركة:</div>
-    ${listHtml}
-  `;
+  app.innerHTML = `<div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">🏢 اختر الشركة:</div>` + listHtml;
 }
 
 function openCompany(coId){
@@ -627,12 +529,9 @@ function renderCompanyDetail(){
       const isImg = isImageFile(f);
       let imgUrl = f.url || getDirectFileUrl(f.storagePath);
       let previewContent = isImg ? `<img src="${imgUrl}" loading="lazy">` : getFileIcon(f.actualName || f.name);
-
       return `
         <div class="file-card" onclick="openFullScreenMedia('${co.id}','${cat.id}','${f.id}')">
-          <div class="file-card-preview">
-            ${previewContent}
-          </div>
+          <div class="file-card-preview">${previewContent}</div>
           <div class="file-card-title" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
         </div>
       `;
@@ -658,13 +557,9 @@ function handleDetailSearch(val){
   searchQuery = val;
   renderCompanyDetail();
   const input = document.getElementById('detailSearchInput');
-  if(input){
-    input.focus();
-    input.selectionStart = input.selectionEnd = input.value.length;
-  }
+  if(input){ input.focus(); input.selectionStart = input.selectionEnd = input.value.length; }
 }
 
-/* Full Screen Media Viewer */
 let replacingContext = null;
 
 function openFullScreenMedia(coId, catId, fId){
@@ -675,32 +570,24 @@ function openFullScreenMedia(coId, catId, fId){
 
   const isImg = isImageFile(file);
   const fileUrl = file.url || getDirectFileUrl(file.storagePath);
-
   const overlay = document.createElement('div');
   overlay.className = 'media-full-overlay';
   overlay.id = 'mediaFullOverlay';
   
-  let mediaBodyHtml = '';
-  if(isImg){
-    mediaBodyHtml = `<img src="${fileUrl}" alt="${escapeHtml(file.name)}">`;
-  } else {
-    mediaBodyHtml = `
-      <div style="text-align:center;color:#fff;">
-        <div style="font-size:60px;margin-bottom:12px;">${getFileIcon(file.actualName || file.name)}</div>
-        <div style="font-size:16px;font-weight:700;margin-bottom:16px;">${escapeHtml(file.name)}</div>
-        <button class="btn primary" onclick="window.open('${fileUrl}', '_blank')">👁 فتح المستند في نافذة كاملة</button>
-      </div>
-    `;
-  }
+  let mediaBodyHtml = isImg ? `<img src="${fileUrl}" alt="${escapeHtml(file.name)}">` : `
+    <div style="text-align:center;color:#fff;">
+      <div style="font-size:60px;margin-bottom:12px;">${getFileIcon(file.actualName || file.name)}</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:16px;">${escapeHtml(file.name)}</div>
+      <button class="btn primary" onclick="window.open('${fileUrl}', '_blank')">👁 فتح المستند في نافذة كاملة</button>
+    </div>
+  `;
 
   overlay.innerHTML = `
     <div class="media-full-header">
       <span class="media-full-title">${escapeHtml(file.name)}</span>
       <button class="btn sm ghost" style="color:#fff;font-size:18px;" onclick="document.getElementById('mediaFullOverlay').remove()">✕</button>
     </div>
-    <div class="media-full-body">
-      ${mediaBodyHtml}
-    </div>
+    <div class="media-full-body">${mediaBodyHtml}</div>
     <div class="media-full-footer">
       ${canShareFiles(coId) ? `<button class="btn primary sm" style="flex:1;min-width:90px;" onclick="shareFile('${file.storagePath}','${escapeHtml(file.name).replace(/'/g,"\\'")}')">🔗 مشاركة</button>` : ''}
       <button class="btn sm" style="flex:1;min-width:90px;" onclick="directDownloadFile('${file.storagePath}','${escapeHtml(file.name).replace(/'/g,"\\'")}')">⬇ تنزيل</button>
@@ -714,24 +601,9 @@ function openFullScreenMedia(coId, catId, fId){
 async function shareFile(storagePath, name){
   const directUrl = getDirectFileUrl(storagePath);
   if(navigator.share){
-    try {
-      await navigator.share({
-        title: name,
-        text: `مستند: ${name}`,
-        url: directUrl
-      });
-      showToast('تمت المشاركة');
-    } catch(err){
-      if(err.name !== 'AbortError') copyShareLink(directUrl);
-    }
-  } else {
-    copyShareLink(directUrl);
-  }
-}
-
-function copyShareLink(url){
-  copyText(url);
-  showToast('تم نسخ رابط المشاركة المباشر 🔗');
+    try { await navigator.share({ title: name, text: `مستند: ${name}`, url: directUrl }); showToast('تمت المشاركة'); }
+    catch(err){ if(err.name !== 'AbortError') copyText(directUrl); }
+  } else { copyText(directUrl); showToast('تم نسخ الرابط 🔗'); }
 }
 
 function startReplaceFile(coId, catId, fId){
@@ -743,56 +615,46 @@ document.getElementById('replaceFileInput').addEventListener('change', async (e)
   const file = e.target.files[0];
   if(!file || !replacingContext) return;
   e.target.value = '';
-
   const { coId, catId, fId } = replacingContext;
   const co = getCompany(coId);
   const cat = co.categories.find(k => k.id === catId);
   const fileObj = cat.files.find(f => f.id === fId);
 
-  showToast('جارِ استبدال الملف ومزامنته...');
-
+  showToast('جارِ الاستبدال والمزامنة...');
   const ext = (file.name.split('.').pop() || 'bin').toLowerCase();
   const fid = cid();
   const path = `${coId}/${catId}/${fid}.${ext}`;
 
   if(supabaseClient){
     try {
-      await supabaseClient.storage.from(BUCKET_NAME).upload(path, file, {
-        upsert: true,
-        contentType: file.type || 'application/octet-stream'
-      });
-      if(fileObj.storagePath){
-        supabaseClient.storage.from(BUCKET_NAME).remove([fileObj.storagePath]);
-      }
+      await supabaseClient.storage.from(BUCKET_NAME).upload(path, file, { upsert: true, contentType: file.type || 'application/octet-stream' });
+      if(fileObj.storagePath) supabaseClient.storage.from(BUCKET_NAME).remove([fileObj.storagePath]);
     } catch(err){}
   }
 
   const isImg = file.type.startsWith('image/') || ['png','jpg','jpeg','webp','svg','gif'].includes(ext);
-  const directUrl = getDirectFileUrl(path);
-
   fileObj.storagePath = path;
   fileObj.actualName = file.name;
   fileObj.isImg = isImg;
-  fileObj.url = directUrl;
+  fileObj.url = getDirectFileUrl(path);
   fileObj.size = file.size;
 
   const overlay = document.getElementById('mediaFullOverlay');
   if(overlay) overlay.remove();
-
   await saveArchive();
   render();
-  showToast('تم استبدال الملف ومزامنته فوراً');
+  showToast('تم استبدال الملف بنجاح');
 });
 
 function delFileFromFullViewer(coId, catId, fId){
-  if(!confirm('هل أنت متأكد من حذف هذا الملف نهائياً؟')) return;
+  if(!confirm('هل أنت متأكد من حذف هذا الملف؟')) return;
   const overlay = document.getElementById('mediaFullOverlay');
   if(overlay) overlay.remove();
   delFile(coId, catId, fId);
 }
 
 async function directDownloadFile(storagePath, name){
-  showToast('جارِ التجهيز والتنزيل...');
+  showToast('جارِ التنزيل...');
   try {
     const directUrl = getDirectFileUrl(storagePath);
     const resp = await fetch(directUrl);
@@ -806,15 +668,10 @@ async function directDownloadFile(storagePath, name){
     a.click();
     a.remove();
     setTimeout(() => window.URL.revokeObjectURL(blobUrl), 1000);
-    showToast('تم التنزيل بنجاح');
-  } catch(e){
-    window.open(getDirectFileUrl(storagePath), '_blank');
-  }
+  } catch(e){ window.open(getDirectFileUrl(storagePath), '_blank'); }
 }
 
-/* Search */
 let smartSearchText = '';
-
 function renderSearch(){
   const app = document.getElementById('app');
   let searchHtml = `
@@ -824,158 +681,84 @@ function renderSearch(){
       <span class="search-ic">🔍</span>
     </div>
   `;
-
   let bodyHtml = '';
   if(!smartSearchText.trim()){
-    bodyHtml = `<div class="card-box" style="text-align:center;padding:26px;color:var(--muted);">ابدأ بكتابة أي حرف وستظهر لك الاقتراحات فوراً</div>`;
+    bodyHtml = `<div class="card-box" style="text-align:center;padding:26px;color:var(--muted);">ابدأ بكتابة أي حرف لتظهر النتائج فوراً</div>`;
   } else {
     const q = smartSearchText.toLowerCase().trim();
     const suggestions = [];
-    const cos = visibleCompanies();
-
-    cos.forEach(co => {
-      if(co.name.toLowerCase().includes(q)){
-        suggestions.push({ type: 'company', title: co.name, co, cat: null, file: null });
-      }
-      const visibleCats = co.categories.filter(k => canAccessCategory(co.id, k.id));
-      visibleCats.forEach(cat => {
-        if(cat.name.toLowerCase().includes(q)){
-          suggestions.push({ type: 'category', title: `${cat.name} (في ${co.name})`, co, cat, file: null });
-        }
+    visibleCompanies().forEach(co => {
+      if(co.name.toLowerCase().includes(q)) suggestions.push({ type: 'company', title: co.name, co, cat: null, file: null });
+      co.categories.filter(k => canAccessCategory(co.id, k.id)).forEach(cat => {
+        if(cat.name.toLowerCase().includes(q)) suggestions.push({ type: 'category', title: `${cat.name} (في ${co.name})`, co, cat, file: null });
         cat.files.forEach(f => {
-          if(f.name.toLowerCase().includes(q)){
-            suggestions.push({ type: 'file', title: f.name, co, cat, file: f });
-          }
+          if(f.name.toLowerCase().includes(q)) suggestions.push({ type: 'file', title: f.name, co, cat, file: f });
         });
       });
     });
-
     if(!suggestions.length){
-      bodyHtml = `<div class="card-box" style="text-align:center;padding:24px;color:var(--muted);">لا توجد نتائج مطابقة لـ "${escapeHtml(smartSearchText)}"</div>`;
+      bodyHtml = `<div class="card-box" style="text-align:center;padding:24px;color:var(--muted);">لا توجد نتائج مطابقة</div>`;
     } else {
       bodyHtml = `
-        <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;">الاقتراحات والنتائج (${suggestions.length}):</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;">النتائج (${suggestions.length}):</div>
         <div class="sug-list">
           ${suggestions.map(s => {
             const label = highlightMatch(s.title, q);
-            if(s.type === 'company'){
-              return `<div class="sug-item" onclick="openCompany('${s.co.id}')"><span>🏢 ${label}</span> <span style="font-size:11px;color:var(--muted);">شركة</span></div>`;
-            } else if(s.type === 'category'){
-              return `<div class="sug-item" onclick="openCompany('${s.co.id}')"><span>📂 ${label}</span> <span style="font-size:11px;color:var(--muted);">تصنيف</span></div>`;
-            } else {
-              return `<div class="sug-item" onclick="openFullScreenMedia('${s.co.id}','${s.cat.id}','${s.file.id}')">
-                <div>
-                  <div>📄 ${label}</div>
-                  <div style="font-size:10.5px;color:var(--muted);margin-top:2px;">🏢 ${escapeHtml(s.co.name)} › 📂 ${escapeHtml(s.cat.name)}</div>
-                </div>
-                <span style="font-size:18px;color:var(--muted);">‹</span>
-              </div>`;
-            }
+            if(s.type === 'company') return `<div class="sug-item" onclick="openCompany('${s.co.id}')"><span>🏢 ${label}</span> <span style="font-size:11px;color:var(--muted);">شركة</span></div>`;
+            if(s.type === 'category') return `<div class="sug-item" onclick="openCompany('${s.co.id}')"><span>📂 ${label}</span> <span style="font-size:11px;color:var(--muted);">تصنيف</span></div>`;
+            return `<div class="sug-item" onclick="openFullScreenMedia('${s.co.id}','${s.cat.id}','${s.file.id}')"><div><div>📄 ${label}</div><div style="font-size:10.5px;color:var(--muted);">🏢 ${escapeHtml(s.co.name)}</div></div><span>‹</span></div>`;
           }).join('')}
         </div>
       `;
     }
   }
-
   app.innerHTML = searchHtml + bodyHtml;
   const input = document.getElementById('smartSearchInput');
-  if(input){
-    input.focus();
-    input.selectionStart = input.selectionEnd = input.value.length;
-  }
+  if(input){ input.focus(); input.selectionStart = input.selectionEnd = input.value.length; }
 }
 
-function handleSmartSearch(val){
-  smartSearchText = val;
-  renderSearch();
-}
-
+function handleSmartSearch(val){ smartSearchText = val; renderSearch(); }
 function highlightMatch(text, query){
   if(!query) return escapeHtml(text);
   const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
   return escapeHtml(text).replace(regex, '<span class="highlight">$1</span>');
 }
 
-/* ================= 4. خزنة كلمات المرور - سلايدر الموظفين والتحكم في الصلاحيات ================= */
 function renderVaultView(){
   const app = document.getElementById('app');
   const cos = visibleCompanies().filter(c => canAccessVault(c.id));
-
   if(!cos.length){
     app.innerHTML = `<div class="card-box" style="text-align:center;padding:26px;color:var(--muted);">لا تملك صلاحية الوصول لخزنة كلمات المرور</div>`;
     return;
   }
-
-  // سلايدر الموظفين (يظهر للمدير، وللموظف إذا وُجدت حسابات مشتركة)
   const visibleUsers = usersData.users.filter(u => u.role !== 'admin');
   let userSliderHtml = '';
   if(isAdmin() && visibleUsers.length){
     userSliderHtml = `
       <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:700;">تصفية حسب الموظف:</div>
       <div class="user-slider-wrap">
-        <div class="user-slider-pill ${selectedVaultUserFilter === 'all' ? 'active' : ''}" onclick="setVaultUserFilter('all')">
-          <span>🌐 الجميع</span>
-        </div>
-        ${visibleUsers.map(u => `
-          <div class="user-slider-pill ${selectedVaultUserFilter === u.id ? 'active' : ''}" onclick="setVaultUserFilter('${u.id}')">
-            <span>👤 ${escapeHtml(u.username)}</span>
-          </div>
-        `).join('')}
+        <div class="user-slider-pill ${selectedVaultUserFilter === 'all' ? 'active' : ''}" onclick="setVaultUserFilter('all')"><span>🌐 الجميع</span></div>
+        ${visibleUsers.map(u => `<div class="user-slider-pill ${selectedVaultUserFilter === u.id ? 'active' : ''}" onclick="setVaultUserFilter('${u.id}')"><span>👤 ${escapeHtml(u.username)}</span></div>`).join('')}
       </div>
     `;
   }
-
-  let searchBarHtml = `
-    <div class="search-box" style="margin-bottom:10px;">
-      <input type="text" id="vaultSearchInput" placeholder="🔍 بحث باسم الخدمة، اسم المستخدم، أو الموظف..." value="${escapeHtml(vaultSearchQuery)}" oninput="handleVaultSearch(this.value)">
-    </div>
-  `;
-
   let vaultHtml = cos.map(co => {
     let allPasses = (co.passwords || []).filter(p => canSeePassword(p));
-    
-    // تصفية السلايدر
-    if(selectedVaultUserFilter !== 'all'){
-      allPasses = allPasses.filter(p => p.assignedUsers && p.assignedUsers.includes(selectedVaultUserFilter));
-    }
-
-    // فلترة البحث
-    if(vaultSearchQuery.trim()){
-      const q = vaultSearchQuery.toLowerCase().trim();
-      allPasses = allPasses.filter(p => {
-        const titleMatch = (p.title || '').toLowerCase().includes(q);
-        const userMatch = (p.username || '').toLowerCase().includes(q);
-        const assignedNames = (p.assignedUsers || []).map(uid => usersData.users.find(u => u.id === uid)?.username || '').join(' ').toLowerCase();
-        return titleMatch || userMatch || assignedNames.includes(q);
-      });
-    }
-
+    if(selectedVaultUserFilter !== 'all') allPasses = allPasses.filter(p => p.assignedUsers && p.assignedUsers.includes(selectedVaultUserFilter));
     return `
       <div class="card-box">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1.5px solid var(--border);padding-bottom:10px;">
           <b style="font-size:16px;">🏢 ${escapeHtml(co.name)}</b>
           ${isAdmin() ? `<button class="btn primary sm" onclick="openPassModal('${co.id}')">+ إضافة رمز / حساب</button>` : ''}
         </div>
-
-        <div>
-          ${allPasses.map(p => renderPassItem(co.id, p)).join('') || '<div style="color:var(--muted);font-size:12.5px;text-align:center;padding:12px;">لا توجد حسابات مسجلة أو مخصصة لك</div>'}
-        </div>
+        <div>${allPasses.map(p => renderPassItem(co.id, p)).join('') || '<div style="color:var(--muted);font-size:12.5px;text-align:center;padding:12px;">لا توجد حسابات مسجلة</div>'}</div>
       </div>
     `;
   }).join('');
-
-  app.innerHTML = `
-    <div style="margin-bottom:10px;font-size:16px;font-weight:800;color:var(--primary);">🔑 خزنة كلمات المرور والحسابات</div>
-    ${userSliderHtml}
-    ${searchBarHtml}
-    ${vaultHtml}
-  `;
+  app.innerHTML = `<div style="margin-bottom:10px;font-size:16px;font-weight:800;color:var(--primary);">🔑 خزنة كلمات المرور</div>` + userSliderHtml + vaultHtml;
 }
 
-function setVaultUserFilter(uid){
-  selectedVaultUserFilter = uid;
-  renderVaultView();
-}
+function setVaultUserFilter(uid){ selectedVaultUserFilter = uid; renderVaultView(); }
 
 function renderPassItem(coId, p){
   let assignedBadge = '';
@@ -984,23 +767,14 @@ function renderPassItem(coId, p){
       const names = p.assignedUsers.map(uid => usersData.users.find(u => u.id === uid)?.username).filter(Boolean).join(', ');
       assignedBadge = `<div style="font-size:11px;color:var(--accent);font-weight:700;margin-top:2px;">👤 مخصص للموظف: ${escapeHtml(names)}</div>`;
     } else {
-      assignedBadge = `<div style="font-size:11px;color:var(--muted);margin-top:2px;">🌐 متاح لجميع المصرح لهم</div>`;
+      assignedBadge = `<div style="font-size:11px;color:var(--muted);margin-top:2px;">🌐 متاح للجميع</div>`;
     }
   }
-  
   return `
     <div class="pass-row-item">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-        <div>
-          <span style="font-weight:700;font-size:14px;color:var(--primary);">🔑 ${escapeHtml(p.title)}</span>
-          ${assignedBadge}
-        </div>
-        ${isAdmin() ? `
-          <div style="display:flex;gap:4px;">
-            <button class="btn sm" style="padding:2px 8px;font-size:11px;" onclick="openPassModal('${coId}', '${p.id}')">⚙️ الصلاحيات والتعديل</button>
-            <button class="btn sm ghost" style="color:var(--danger);padding:0 4px;" onclick="delPass('${coId}','${p.id}')">✕</button>
-          </div>
-        ` : ''}
+        <div><span style="font-weight:700;font-size:14px;color:var(--primary);">🔑 ${escapeHtml(p.title)}</span>${assignedBadge}</div>
+        ${isAdmin() ? `<div style="display:flex;gap:4px;"><button class="btn sm" style="padding:2px 8px;font-size:11px;" onclick="openPassModal('${coId}', '${p.id}')">⚙️ تعديل</button><button class="btn sm ghost" style="color:var(--danger);padding:0 4px;" onclick="delPass('${coId}','${p.id}')">✕</button></div>` : ''}
       </div>
       ${p.username ? `<div class="pass-meta"><span>اسم المستخدم:</span> <b>${escapeHtml(p.username)}</b> <button class="btn sm" style="padding:1px 6px;" onclick="copyText('${escapeHtml(p.username)}')">نسخ</button></div>` : ''}
       <div class="pass-meta">
@@ -1015,51 +789,31 @@ function renderPassItem(coId, p){
   `;
 }
 
-function handleVaultSearch(val){
-  vaultSearchQuery = val;
-  renderVaultView();
-  const input = document.getElementById('vaultSearchInput');
-  if(input){
-    input.focus();
-    input.selectionStart = input.selectionEnd = input.value.length;
-  }
-}
-
 function openPassModal(coId, pId = null){
   const co = getCompany(coId);
   const isEdit = !!pId;
   const pass = isEdit ? co.passwords.find(p => p.id === pId) : { title: '', username: '', secret: '', assignedUsers: [] };
   const regUsers = usersData.users.filter(u => u.role !== 'admin');
-
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
   overlay.id = 'passModalOverlay';
   overlay.innerHTML = `
     <div class="modal-sheet">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <b style="font-size:15px;">${isEdit ? '⚙️ تعديل الحساب وإعدادات الصلاحيات' : '+ إضافة حساب جديد للخزنة'}</b>
+        <b style="font-size:15px;">${isEdit ? '⚙️ تعديل الحساب' : '+ إضافة حساب للخزنة'}</b>
         <button class="btn sm ghost" onclick="document.getElementById('passModalOverlay').remove()">✕</button>
       </div>
-      <div class="field"><label>اسم المنصة / الخدمة (مثال: قوى / التأمينات)</label><input id="p-title" value="${escapeHtml(pass.title)}"></div>
+      <div class="field"><label>اسم المنصة</label><input id="p-title" value="${escapeHtml(pass.title)}"></div>
       <div class="field"><label>اسم المستخدم / الإيميل</label><input id="p-user" value="${escapeHtml(pass.username)}"></div>
-      <div class="field"><label>الرمز السري / كلمة المرور</label><input id="p-secret" value="${escapeHtml(pass.secret)}"></div>
-
+      <div class="field"><label>كلمة المرور</label><input id="p-secret" value="${escapeHtml(pass.secret)}"></div>
       ${regUsers.length ? `
-        <div class="field" style="margin-top:10px;">
-          <label style="color:var(--accent);">تحديد الموظفين المسموح لهم برؤية هذا الرمز:</label>
-          <div style="font-size:11.5px;color:var(--muted);margin-bottom:4px;">(حدد موظفاً أو أكثر، أو اتركها بدون تحديد ليراها الجميع)</div>
-          <div style="background:var(--bg);padding:8px;border-radius:8px;border:1px solid var(--border);max-height:150px;overflow-y:auto;">
-            ${regUsers.map(u => `
-              <label style="display:block;font-size:13px;margin:6px 0;cursor:pointer;">
-                <input type="checkbox" class="pass-assign-chk" value="${u.id}" ${pass.assignedUsers && pass.assignedUsers.includes(u.id) ? 'checked' : ''}>
-                👤 ${escapeHtml(u.username)}
-              </label>
-            `).join('')}
+        <div class="field"><label style="color:var(--accent);">تحديد الموظفين:</label>
+          <div style="background:var(--bg);padding:8px;border-radius:8px;border:1px solid var(--border);max-height:130px;overflow-y:auto;">
+            ${regUsers.map(u => `<label style="display:block;font-size:13px;margin:4px 0;"><input type="checkbox" class="pass-assign-chk" value="${u.id}" ${pass.assignedUsers && pass.assignedUsers.includes(u.id) ? 'checked' : ''}> 👤 ${escapeHtml(u.username)}</label>`).join('')}
           </div>
         </div>
       ` : ''}
-
-      <button class="btn primary" style="width:100%;margin-top:8px;" onclick="submitPass('${coId}', '${pId || ''}')">حفظ ومزامنة الحساب</button>
+      <button class="btn primary" style="width:100%;margin-top:8px;" onclick="submitPass('${coId}', '${pId || ''}')">حفظ ومزامنة</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -1069,36 +823,24 @@ async function submitPass(coId, pId){
   const t = document.getElementById('p-title').value.trim();
   const u = document.getElementById('p-user').value.trim();
   const s = document.getElementById('p-secret').value.trim();
-  if(!t || !s){ showToast('يرجى كتابة اسم المنصة والرمز'); return; }
-
+  if(!t || !s){ showToast('املأ الحقول المطلوبة'); return; }
   const assigned = Array.from(document.querySelectorAll('.pass-assign-chk:checked')).map(x => x.value);
   const co = getCompany(coId);
   if(!co.passwords) co.passwords = [];
-
   if(pId){
     const pass = co.passwords.find(p => p.id === pId);
-    pass.title = t;
-    pass.username = u;
-    pass.secret = s;
-    pass.assignedUsers = assigned;
+    pass.title = t; pass.username = u; pass.secret = s; pass.assignedUsers = assigned;
   } else {
-    co.passwords.push({
-      id: cid(),
-      title: t,
-      username: u,
-      secret: s,
-      assignedUsers: assigned
-    });
+    co.passwords.push({ id: cid(), title: t, username: u, secret: s, assignedUsers: assigned });
   }
-
   document.getElementById('passModalOverlay').remove();
   await saveArchive();
   render();
-  showToast(pId ? 'تم التعديل ومزامنته' : 'تمت الإضافة بنجاح');
+  showToast('تم الحفظ بنجاح');
 }
 
 async function delPass(coId, pId){
-  if(!confirm('حذف هذا الحساب نهائياً من الخزنة؟')) return;
+  if(!confirm('حذف الحساب نهائياً؟')) return;
   const co = getCompany(coId);
   co.passwords = co.passwords.filter(p => p.id !== pId);
   await saveArchive();
@@ -1106,48 +848,40 @@ async function delPass(coId, pId){
   showToast('تم الحذف');
 }
 
-/* 5. الإعدادات مع إمكانية تعديل اسم الشركة */
 let settingsTab = 'companies';
 let editUid = null;
 
 function renderSettings(){
   const app = document.getElementById('app');
-
   let profileBox = `
     <div class="card-box">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <div>
-          <b style="font-size:15px;">👤 ${escapeHtml(session.username)}</b>
-          <div style="font-size:12px;color:var(--muted);">${isAdmin()?'مدير النظام الكامل':'موظف / مستخدم'}</div>
-        </div>
+        <div><b style="font-size:15px;">👤 ${escapeHtml(session.username)}</b><div style="font-size:12px;color:var(--muted);">${isAdmin()?'مدير النظام':'موظف'}</div></div>
         <button class="btn sm ghost" style="color:var(--danger);" onclick="logout()">تسجيل الخروج</button>
       </div>
       <div style="border-top:1px solid var(--border);padding-top:12px;">
-        <b style="font-size:13.5px;display:block;margin-bottom:8px;">تعديل بيانات الحساب:</b>
+        <b style="font-size:13.5px;display:block;margin-bottom:8px;">تعديل بيانات حسابك:</b>
         <div class="field"><label>اسم المستخدم</label><input id="my-username" value="${escapeHtml(session.username)}"></div>
-        <div class="field"><label>كلمة مرور جديدة</label><input id="my-password" type="password" placeholder="اتركها فارغة بدون تغيير"></div>
-        <button class="btn primary sm" style="width:100%;margin-top:4px;" onclick="saveMyProfile()">حفظ بيانات الحساب</button>
+        <div class="field"><label>كلمة المرور الجديدة</label><input id="my-password" type="password" placeholder="اتركها فارغة إذا لا تريد تغييرها"></div>
+        <button class="btn primary sm" style="width:100%;margin-top:4px;" onclick="saveMyProfile()">حفظ التعديلات</button>
       </div>
     </div>
   `;
-
   if(!isAdmin()){
-    app.innerHTML = `<div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">⚙️ إعدادات الحساب</div>` + profileBox;
+    app.innerHTML = `<div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">⚙️ الإعدادات</div>` + profileBox;
     return;
   }
-
   const headerTabs = `
     <div style="display:flex;gap:6px;margin-bottom:12px;">
       <button class="btn sm ${settingsTab==='companies'?'primary':''}" style="flex:1;" onclick="settingsTab='companies';renderSettings();">🏢 الشركات والتصنيفات</button>
       <button class="btn sm ${settingsTab==='users'?'primary':''}" style="flex:1;" onclick="settingsTab='users';editUid=null;renderSettings();">👥 الموظفين والصلاحيات</button>
     </div>
   `;
-
   let tabBody = '';
   if(settingsTab === 'companies'){
     tabBody = `
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <b style="font-size:14px;">الشركات المسجلة:</b>
+        <b style="font-size:14px;">الشركات:</b>
         <button class="btn primary sm" onclick="settingsAddCompany()">+ إضافة شركة</button>
       </div>
       <div>
@@ -1156,7 +890,7 @@ function renderSettings(){
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
               <b style="font-size:14.5px;color:var(--primary);">🏢 ${escapeHtml(c.name)}</b>
               <div style="display:flex;gap:4px;">
-                <button class="btn sm" onclick="settingsEditCompanyName('${c.id}')">✎ تعديل الاسم</button>
+                <button class="btn sm" onclick="settingsEditCompanyName('${c.id}')">✎ تعديل</button>
                 <button class="btn sm" onclick="settingsAddCategory('${c.id}')">+ تصنيف</button>
                 <button class="btn sm ghost" style="color:var(--danger);" onclick="settingsDelCompany('${c.id}')">حذف</button>
               </div>
@@ -1167,7 +901,7 @@ function renderSettings(){
                   <span>📂 ${escapeHtml(k.name)} (${k.files.length} ملف)</span>
                   <button class="btn sm ghost" style="color:var(--danger);padding:0 4px;" onclick="settingsDelCat('${c.id}','${k.id}')">✕</button>
                 </div>
-              `).join('') || '<div style="font-size:12px;color:var(--muted);">لا توجد تصنيفات فرعية</div>'}
+              `).join('') || '<div style="font-size:12px;color:var(--muted);">لا توجد تصنيفات</div>'}
             </div>
           </div>
         `).join('')}
@@ -1182,17 +916,16 @@ function renderSettings(){
           ${u.role!=='admin'?`<button class="btn sm ghost" style="color:var(--danger);" onclick="settingsDelUser('${u.id}')">✕</button>`:''}
         </div>
       </div>`).join('');
-
     let userForm = '';
     if(editUid){
       const u = usersData.users.find(x => x.id === editUid);
       userForm = `
         <div style="background:var(--bg);padding:12px;border-radius:10px;margin-top:10px;border:1px solid var(--border);">
-          <b style="font-size:14px;color:var(--accent);">✎ تعديل بيانات وصلاحيات: ${escapeHtml(u.username)}</b>
+          <b style="font-size:14px;color:var(--accent);">✎ تعديل موظف: ${escapeHtml(u.username)}</b>
           <div class="field" style="margin-top:8px;"><label>اسم المستخدم</label><input id="ed-name" value="${escapeHtml(u.username)}"></div>
-          <div class="field"><label>كلمة مرور جديدة (اختياري)</label><input id="ed-pass" type="password"></div>
-          <div class="field"><label>الصلاحيات الممنوحة للشركات:</label>${renderPermSelector(u.permissions || {})}</div>
-          <div style="display:flex;gap:6px;"><button class="btn primary" style="flex:1;" onclick="settingsSaveUserEdit()">حفظ التعديلات</button><button class="btn sm" onclick="editUid=null;renderSettings();">إلغاء</button></div>
+          <div class="field"><label>كلمة المرور الجديدة</label><input id="ed-pass" type="password"></div>
+          <div class="field"><label>الصلاحيات:</label>${renderPermSelector(u.permissions || {})}</div>
+          <div style="display:flex;gap:6px;"><button class="btn primary" style="flex:1;" onclick="settingsSaveUserEdit()">حفظ</button><button class="btn sm" onclick="editUid=null;renderSettings();">إلغاء</button></div>
         </div>`;
     } else {
       userForm = `
@@ -1200,47 +933,37 @@ function renderSettings(){
           <b style="font-size:14px;">+ إضافة موظف جديد</b>
           <div class="field" style="margin-top:8px;"><label>اسم المستخدم</label><input id="nu-name"></div>
           <div class="field"><label>كلمة المرور</label><input id="nu-pass" type="password"></div>
-          <div class="field"><label>الصلاحيات الممنوحة للشركات:</label>${renderPermSelector({})}</div>
-          <button class="btn primary" style="width:100%;margin-top:6px;" onclick="settingsAddUser()">إضافة الموظف</button>
+          <div class="field"><label>الصلاحيات:</label>${renderPermSelector({})}</div>
+          <button class="btn primary" style="width:100%;margin-top:6px;" onclick="settingsAddUser()">إضافة</button>
         </div>`;
     }
-
     tabBody = `<div>${list}</div>${userForm}`;
   }
-
-  app.innerHTML = `<div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">⚙️ الإعدادات والإدارة</div>` + profileBox + headerTabs + tabBody;
+  app.innerHTML = `<div style="margin-bottom:12px;font-size:16px;font-weight:800;color:var(--primary);">⚙️ الإعدادات</div>` + profileBox + headerTabs + tabBody;
 }
 
 async function settingsEditCompanyName(coId){
   const co = getCompany(coId);
-  const newName = prompt('أدخل الاسم الجديد للشركة:', co.name);
-  if(!newName || newName.trim() === '' || newName.trim() === co.name) return;
+  const newName = prompt('اسم الشركة الجديد:', co.name);
+  if(!newName || !newName.trim()) return;
   co.name = newName.trim();
   await saveArchive();
   renderSettings();
-  showToast('تم تحديث اسم الشركة ومزامنته');
+  showToast('تم التحديث بنجاح');
 }
 
 async function saveMyProfile(){
   const newName = document.getElementById('my-username').value.trim();
   const newPass = document.getElementById('my-password').value;
-  if(!newName){ showToast('اسم المستخدم مطلوب'); return; }
-
-  const clash = usersData.users.find(u => u.username === newName && u.id !== session.id);
-  if(clash){ showToast('اسم المستخدم مستخدم بالفعل'); return; }
-
+  if(!newName) return;
   const uRef = usersData.users.find(u => u.id === session.id);
   uRef.username = newName;
-  if(newPass){
-    if(newPass.length < 4){ showToast('كلمة المرور يجب أن تكون 4 خانات فأكثر'); return; }
-    uRef.salt = cid();
-    uRef.hash = await hashPassword(newPass, uRef.salt);
-  }
+  if(newPass && newPass.length >= 4) uRef.pass = newPass;
   session = uRef;
   localStorage.setItem('arc_current_session', JSON.stringify(session));
   await saveUsers();
   render();
-  showToast('تم تحديث بياناتك بنجاح');
+  showToast('تم الحفظ بنجاح');
 }
 
 let selectedUploadFile = null;
@@ -1248,9 +971,7 @@ let currentCoId = null;
 let currentCatId = null;
 
 function openUploadModal(coId, catId){
-  currentCoId = coId;
-  currentCatId = catId;
-  selectedUploadFile = null;
+  currentCoId = coId; currentCatId = catId; selectedUploadFile = null;
   document.getElementById('fileInput').click();
 }
 
@@ -1259,23 +980,18 @@ document.getElementById('fileInput').addEventListener('change', (e) => {
   if(!file) return;
   selectedUploadFile = file;
   e.target.value = '';
-
   const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
-
   const overlay = document.createElement('div');
   overlay.className = 'modal-overlay';
   overlay.id = 'uploadConfirmModal';
   overlay.innerHTML = `
     <div class="modal-sheet">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <b style="font-size:15px;">رفع ملف / صورة</b>
+        <b style="font-size:15px;">رفع ملف</b>
         <button class="btn sm ghost" onclick="document.getElementById('uploadConfirmModal').remove()">✕</button>
       </div>
-      <div class="field">
-        <label>اسم الملف أو الصورة في الأرشيف:</label>
-        <input id="custom-file-name" value="${escapeHtml(nameWithoutExt)}">
-      </div>
-      <button class="btn primary" id="uploadBtnSubmit" style="width:100%;margin-top:8px;" onclick="submitUploadFile()">تأكيد ورفع الملف</button>
+      <div class="field"><label>اسم الملف في الأرشيف:</label><input id="custom-file-name" value="${escapeHtml(nameWithoutExt)}"></div>
+      <button class="btn primary" id="uploadBtnSubmit" style="width:100%;margin-top:8px;" onclick="submitUploadFile()">تأكيد الرفع</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -1285,81 +1001,52 @@ async function submitUploadFile(){
   if(!selectedUploadFile || !currentCoId || !currentCatId) return;
   const customName = document.getElementById('custom-file-name').value.trim() || selectedUploadFile.name;
   const btn = document.getElementById('uploadBtnSubmit');
-  btn.disabled = true;
-  btn.textContent = 'جارِ الرفع والمزامنة...';
-
+  btn.disabled = true; btn.textContent = 'جارِ الرفع...';
   const ext = (selectedUploadFile.name.split('.').pop() || 'bin').toLowerCase();
   const fid = cid();
   const path = `${currentCoId}/${currentCatId}/${fid}.${ext}`;
 
   if(supabaseClient){
     try {
-      const { error: upErr } = await supabaseClient.storage.from(BUCKET_NAME).upload(path, selectedUploadFile, {
-        upsert: true,
-        contentType: selectedUploadFile.type || 'application/octet-stream'
-      });
-      if(upErr){
-        alert('فشل الرفع السحابي: ' + upErr.message);
-        btn.disabled = false;
-        btn.textContent = 'إعادة المحاولة';
-        return;
-      }
-    } catch(err){
-      alert('خطأ أثناء الاتصال: ' + err.message);
-      btn.disabled = false;
-      btn.textContent = 'إعادة المحاولة';
-      return;
-    }
+      await supabaseClient.storage.from(BUCKET_NAME).upload(path, selectedUploadFile, { upsert: true, contentType: selectedUploadFile.type || 'application/octet-stream' });
+    } catch(err){ alert('خطأ في الرفع: ' + err.message); btn.disabled = false; btn.textContent = 'إعادة المحاولة'; return; }
   }
 
   const isImg = selectedUploadFile.type.startsWith('image/') || ['png','jpg','jpeg','webp','svg','gif'].includes(ext);
-  const directUrl = getDirectFileUrl(path);
-
   const cat = getCompany(currentCoId).categories.find(k => k.id === currentCatId);
-  cat.files.push({
-    id: fid,
-    name: customName,
-    actualName: selectedUploadFile.name,
-    isImg: isImg,
-    url: directUrl,
-    size: selectedUploadFile.size,
-    storagePath: path
-  });
+  cat.files.push({ id: fid, name: customName, actualName: selectedUploadFile.name, isImg: isImg, url: getDirectFileUrl(path), size: selectedUploadFile.size, storagePath: path });
 
   document.getElementById('uploadConfirmModal').remove();
   await saveArchive();
   render();
-  showToast('تم رفع وتثبيت الملف بنجاح');
+  showToast('تم رفع الملف بنجاح');
 }
 
 async function delFile(coId, catId, fId){
   const cat = getCompany(coId).categories.find(k => k.id === catId);
   const file = cat.files.find(f => f.id === fId);
-  if(file && file.storagePath && supabaseClient){
-    supabaseClient.storage.from(BUCKET_NAME).remove([file.storagePath]);
-  }
+  if(file && file.storagePath && supabaseClient) supabaseClient.storage.from(BUCKET_NAME).remove([file.storagePath]);
   cat.files = cat.files.filter(f => f.id !== fId);
   await saveArchive();
   render();
-  showToast('تم حذف الملف');
+  showToast('تم الحذف');
 }
 
 async function settingsAddCompany(){
   const n = prompt('اسم الشركة الجديدة:');
-  if(!n) return;
-  const co = { id: cid(), name: n.trim(), passwords: [], categories: [] };
-  archiveData.companies.push(co);
+  if(!n || !n.trim()) return;
+  archiveData.companies.push({ id: cid(), name: n.trim(), passwords: [], categories: [] });
   await saveArchive();
   renderSettings();
-  showToast('تمت إضافة الشركة');
+  showToast('تمت الإضافة');
 }
 
 async function settingsDelCompany(id){
-  if(!confirm('حذف هذه الشركة وكافة ملفاتها؟')) return;
+  if(!confirm('حذف هذه الشركة نهائياً؟')) return;
   archiveData.companies = archiveData.companies.filter(c => c.id !== id);
   await saveArchive();
   renderSettings();
-  showToast('تم حذف الشركة');
+  showToast('تم الحذف');
 }
 
 function settingsAddCategory(coId){
@@ -1375,13 +1062,12 @@ function settingsAddCategory(coId){
       </div>
       <div class="field"><label>اسم التصنيف</label><input id="new-cat-name" placeholder="مثال: رخص البلدية"></div>
       ${regUsers.length ? `
-        <div class="field">
-          <label>إظهار للموظفين مباشرة:</label>
+        <div class="field"><label>إظهار للموظفين:</label>
           <div style="background:var(--bg);padding:8px;border-radius:8px;border:1px solid var(--border);">
             ${regUsers.map(u => `<label style="display:block;font-size:13px;margin:4px 0;"><input type="checkbox" class="cat-vis-u" value="${u.id}"> ${escapeHtml(u.username)}</label>`).join('')}
           </div>
         </div>` : ''}
-      <button class="btn primary" style="width:100%;margin-top:8px;" onclick="settingsSubmitAddCat('${coId}')">حفظ التصنيف</button>
+      <button class="btn primary" style="width:100%;margin-top:8px;" onclick="settingsSubmitAddCat('${coId}')">حفظ</button>
     </div>`;
   document.body.appendChild(overlay);
 }
@@ -1391,25 +1077,20 @@ async function settingsSubmitAddCat(coId){
   if(!name) return;
   const newCatId = cid();
   getCompany(coId).categories.push({ id: newCatId, name: name, files: [] });
-
   const checked = Array.from(document.querySelectorAll('.cat-vis-u:checked')).map(x => x.value);
   checked.forEach(uid => {
     const u = usersData.users.find(x => x.id === uid);
     if(u){
       if(!u.permissions) u.permissions = {};
       if(!u.permissions[coId]) u.permissions[coId] = { all: false, vault: false, canDelete: false, canShare: false, cats: [] };
-      if(!u.permissions[coId].all){
-        if(!u.permissions[coId].cats) u.permissions[coId].cats = [];
-        u.permissions[coId].cats.push(newCatId);
-      }
+      if(!u.permissions[coId].all && !u.permissions[coId].cats.includes(newCatId)) u.permissions[coId].cats.push(newCatId);
     }
   });
-
   await saveArchive();
   if(checked.length) await saveUsers();
   document.getElementById('catModal').remove();
   renderSettings();
-  showToast('تمت إضافة التصنيف');
+  showToast('تمت الإضافة');
 }
 
 async function settingsDelCat(coId, catId){
@@ -1418,7 +1099,7 @@ async function settingsDelCat(coId, catId){
   co.categories = co.categories.filter(k => k.id !== catId);
   await saveArchive();
   renderSettings();
-  showToast('تم حذف التصنيف');
+  showToast('تم الحذف');
 }
 
 function renderPermSelector(userPerms){
@@ -1426,15 +1107,15 @@ function renderPermSelector(userPerms){
     const p = userPerms[c.id] || { all: false, vault: false, canDelete: false, canShare: false, cats: [] };
     return `
       <div style="background:#fff;padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid var(--border);">
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:6px;">
+        <div style="font-size:13px;margin-bottom:6px;">
           <label style="font-weight:700;"><input type="checkbox" class="co-chk" data-coid="${c.id}" ${p.all?'checked':''}> 🏢 ${escapeHtml(c.name)} (كامل الشركة)</label>
         </div>
         <div style="display:flex;gap:10px;font-size:11.5px;margin-bottom:8px;color:var(--muted);flex-wrap:wrap;">
-          <label style="color:var(--accent);font-weight:700;"><input type="checkbox" class="vault-chk" data-coid="${c.id}" ${p.vault?'checked':''}> 🔑 إظهار الخزنة</label>
+          <label style="color:var(--accent);font-weight:700;"><input type="checkbox" class="vault-chk" data-coid="${c.id}" ${p.vault?'checked':''}> 🔑 الخزنة</label>
           <label style="color:#2563EB;font-weight:700;"><input type="checkbox" class="share-chk" data-coid="${c.id}" ${p.canShare?'checked':''}> 🔗 المشاركة</label>
           <label style="color:var(--danger);font-weight:700;"><input type="checkbox" class="delete-chk" data-coid="${c.id}" ${p.canDelete?'checked':''}> 🗑 الحذف</label>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;padding-right:8px;">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
           ${c.categories.map(k => `<label style="font-size:12px;background:var(--bg);padding:3px 8px;border-radius:6px;"><input type="checkbox" class="cat-chk" data-coid="${c.id}" value="${k.id}" ${p.cats&&p.cats.includes(k.id)?'checked':''}> ${escapeHtml(k.name)}</label>`).join('')}
         </div>
       </div>`;
@@ -1449,15 +1130,8 @@ function getSelectedPerms(){
     const canDelete = document.querySelector(`.delete-chk[data-coid="${c.id}"]`)?.checked;
     const canShare = document.querySelector(`.share-chk[data-coid="${c.id}"]`)?.checked;
     const cats = Array.from(document.querySelectorAll(`.cat-chk[data-coid="${c.id}"]:checked`)).map(x => x.value);
-    
     if(coAll || vault || canDelete || canShare || cats.length){
-      perms[c.id] = {
-        all: !!coAll,
-        vault: !!vault,
-        canDelete: !!canDelete,
-        canShare: !!canShare,
-        cats: cats
-      };
+      perms[c.id] = { all: !!coAll, vault: !!vault, canDelete: !!canDelete, canShare: !!canShare, cats };
     }
   });
   return perms;
@@ -1469,24 +1143,19 @@ async function settingsSaveUserEdit(){
   const p = document.getElementById('ed-pass').value;
   if(!n) return;
   u.username = n;
-  if(p && p.length >= 4){
-    u.salt = cid();
-    u.hash = await hashPassword(p, u.salt);
-  }
+  if(p && p.length >= 4) u.pass = p;
   if(u.role !== 'admin') u.permissions = getSelectedPerms();
   await saveUsers();
   editUid = null;
   renderSettings();
-  showToast('تم حفظ التعديلات');
+  showToast('تم الحفظ');
 }
 
 async function settingsAddUser(){
   const u = document.getElementById('nu-name').value.trim();
   const p = document.getElementById('nu-pass').value;
-  if(!u || p.length < 4){ showToast('أدخل اسماً وكلمة سر من 4 خانات'); return; }
-  const salt = cid();
-  const hash = await hashPassword(p, salt);
-  usersData.users.push({ id: cid(), username: u, salt, hash, role: 'user', permissions: getSelectedPerms() });
+  if(!u || p.length < 4){ showToast('أدخل اسم وكلمة مرور من 4 خانات فأكثر'); return; }
+  usersData.users.push({ id: cid(), username: u, pass: p, role: 'user', permissions: getSelectedPerms() });
   await saveUsers();
   renderSettings();
   showToast('تمت إضافة الموظف');
